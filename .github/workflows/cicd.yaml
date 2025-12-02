@@ -9,7 +9,7 @@ jobs:
     runs-on: self-hosted  # your local runner
 
     env:
-      DOCKERHUB_USER: your-dockerhub-username
+      DOCKERHUB_USER: gajapathi22
       BACKEND_IMAGE: ${{ env.DOCKERHUB_USER }}/demo-backend
       FRONTEND_IMAGE: ${{ env.DOCKERHUB_USER }}/demo-frontend
 
