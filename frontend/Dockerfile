@@ -1,0 +1,12 @@
+import node:18-alpine As build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Serve Stage
+From nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
