@@ -46,6 +46,10 @@ pipeline {
             sh 'kubectl apply -f k8s/frontend-deployment.yaml'
             sh 'kubectl apply -f k8s/backend-service.yaml'
             sh 'kubectl apply -f k8s/frontend-service.yaml'
+
+            # Force restart so new pods pull the latest image
+            kubectl rollout restart deployment backend -n demo || true
+            kubectl rollout restart deployment frontend -n demo || true
         }
        }
     }
