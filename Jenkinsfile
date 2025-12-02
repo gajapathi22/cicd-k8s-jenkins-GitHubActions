@@ -15,13 +15,13 @@ pipeline {
     }
        stage('Build Backend IMage'){
          steps{
-            sh 'docker build -t $BACKEND_IMAGE ./backend'
+            sh 'docker build -network=host -t $BACKEND_IMAGE ./backend'
          }
        }
 
        stage('Build Frontend Image'){
          steps{
-            sh 'docker build -t $FRONTEND_IMAGE ./frontend'
+            sh 'docker build -network=host -t $FRONTEND_IMAGE ./frontend'
          }
        }
 
